@@ -9,11 +9,13 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @TestPropertySource(
         locations = "classpath:application-test.properties")
+
 public class StudentRessourceIT {
     @Autowired
     private StudentRepository studentRepository;
@@ -24,7 +26,12 @@ public class StudentRessourceIT {
         int databaseSizeBeforeCreate = studentRepository.findAll().size();
         assertThat(databaseSizeBeforeCreate).isEqualTo(0);
 
-//        List<Item> studentList = studentRepository.findAll();
-//        assertThat(studentList).hasSize(databaseSizeBeforeCreate + 1);
+        Student student = new Student();
+//        item.setId(6);
+        student.setName("Pierre");
+        studentRepository.save(student);
+
+        List<Student> studentList = studentRepository.findAll();
+        assertThat(studentList).hasSize(databaseSizeBeforeCreate + 1);
     }
 }
