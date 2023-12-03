@@ -27,8 +27,7 @@ public class StudentRessourceIT {
         assertThat(databaseSizeBeforeCreate).isEqualTo(0);
 
         Student student = new Student();
-//        item.setId(6);
-        student.setName("Pierre");
+        student.setName("Loic");
         studentRepository.save(student);
 
         List<Student> studentList = studentRepository.findAll();
