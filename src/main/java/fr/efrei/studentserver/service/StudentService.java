@@ -26,4 +26,16 @@ public class StudentService {
         return Student.orElse(null);
     }
 
+    public Student save(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public boolean deleteById(Integer id) {
+        if (studentRepository.existsById(id)) {
+            studentRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }
