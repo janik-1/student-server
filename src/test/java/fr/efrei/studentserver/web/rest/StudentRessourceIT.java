@@ -22,7 +22,7 @@ public class StudentRessourceIT {
 
     @Test
     @Transactional
-    void createItem() throws Exception {
+    void createStudent() throws Exception {
         int databaseSizeBeforeCreate = studentRepository.findAll().size();
         assertThat(databaseSizeBeforeCreate).isEqualTo(0);
 
@@ -33,4 +33,6 @@ public class StudentRessourceIT {
         List<Student> studentList = studentRepository.findAll();
         assertThat(studentList).hasSize(databaseSizeBeforeCreate + 1);
     }
+    
+
 }
